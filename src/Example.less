@@ -1,0 +1,31 @@
+.Popover {
+  &.open {
+    ._popover-content {
+      display: inline;
+      position: relative;
+      top: 3px;
+      left: 16px;
+    }
+    ._propover-mask {
+      display: initial;
+      background: rgba(0, 0, 0, 0.4);
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      width: 100vw;
+      height: 100vh;
+    }
+  }
+
+  ._popover-content,
+  ._propover-mask {
+    display: none;
+  }
+}
+.Popover .card {
+  padding: 8px;
+  background: white;
+  border-radius: 8px;
+  width: max-content;
+}

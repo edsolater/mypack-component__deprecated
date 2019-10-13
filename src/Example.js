@@ -14,8 +14,9 @@ import './Example.css'
 /**
  * @typedef { Object } Popover_Props
  * @property { string } [className='']
- * @property { string } [placement='bottom']
- * @property { ReactChildren | ReactChild } [overlay] 弹出的内容
+ * @property { string } [contentPlacement='bottom']
+ * @property { boolean } [hasMask=false]
+ * @property { ReactChildren | ReactChild } [content] 弹出的内容
  * @property {'boolean' | 'yes'} yelll 例子
  *
  * @extends { Component<Popover_Props> }
@@ -26,20 +27,23 @@ class Popover extends Component {
   }
   render() {
     const { open } = this.state
-    const { children, className = '', placement = 'bottom', overlay } = this.props
+    const { children, className = '', contentPlacement = 'bottom', content, hasMask = false } = this.props
     return (
       <div className={`Popover${className && ` ${className}`}${open ? ` open` : ''}`}>
         <div
           className="_popover-slot"
           onClick={() => {
-            console.log('haha')
+            this.setState({ open: !open })
           }}
         >
           {children}
         </div>
-        <div className="_popover-overlay" data-placement={placement.toLowerCase()}>
-          {overlay}
+        <div className="_popover-content" data-placement={contentPlacement.toLowerCase()}>
+          {content}
         </div>
+        {hasMask ? <div className="_propover-mask" onClick={()=>{
+          this.setState({ open: !open })
+        }}/> : null}
       </div>
     )
   }
@@ -48,7 +52,7 @@ class Popover extends Component {
 function UsageExample() {
   return (
     <div className="Example">
-      <Popover placement="Right left" overlay={<div className="he">ha</div>}>
+      <Popover contentPlacement="Right left" hasMask={true} content={<div className="card">ha</div>}>
         <button
           className="inner-button"
           onClick={() => {
