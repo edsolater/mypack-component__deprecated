@@ -1,6 +1,6 @@
 .Popover.open ._popBox {
   display: initial;
-  position: relative;
+  position: absolute;
 }
 .Popover.open ._mask {
   display: initial;
