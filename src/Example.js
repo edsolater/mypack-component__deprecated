@@ -1,6 +1,8 @@
-import React, { ReactChildren, ReactChild } from 'react'
+import React from 'react'
+import classnames from 'classnames'
 import './Example.css'
-import { Popover } from './Popover'
+import { Popover } from './popover/Popover'
+import { List } from './List'
 
 function UsageExample() {
   return (
@@ -17,6 +19,13 @@ function UsageExample() {
       >
         <button className="inner-button">hello</button>
       </Popover>
+      <List>
+        <div>hello</div>
+        <div>hello</div>
+        <div>world</div>
+        <div>world</div>
+        <div>world</div>
+      </List>
     </div>
   )
 }

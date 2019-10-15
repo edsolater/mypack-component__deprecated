@@ -4,3 +4,6 @@
   border-radius: 8px;
   width: max-content;
 }
+.List ._item {
+  list-style: none;
+}
