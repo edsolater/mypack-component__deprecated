@@ -1,8 +1,91 @@
-import React from 'react'
+import React, { ReactChildren, ReactChild, FormHTMLAttributes } from 'react'
 import classnames from 'classnames'
 import './Example.css'
 import { Popover } from './popover/Popover'
 import { List } from './List'
+
+/**
+ * @typedef { Object } Form_Props
+ * @property { string } [className] 给予组件额外的名称
+ */
+// /**
+//  * @typedef { Object } Form_State
+//  * @property { boolean } [open] 是否弹出弹框
+//  */
+/**
+ * 将 <form> 与 <fieldset> 合并成 <Form>
+ * @extends { Component<FormHTMLAttributes, Form_State> }
+ */
+class Form extends React.Component {
+  render() {
+    const { children, className, ...restProps } = this.props
+    return (
+      <form className={classnames('Form', className)} {...restProps}>
+        {children}
+      </form>
+    )
+  }
+}
+Form.Group = class FormGroup extends React.Component {
+  render() {
+    const { children, className, ...restProps } = this.props
+    return (
+      <fieldset className={classnames('FormGroup', className)} {...restProps}>
+        {children}
+      </fieldset>
+    )
+  }
+}
+Form.Item = class FormItem extends React.Component {
+  render() {
+    const { children, className, ...restProps } = this.props
+    return (
+      <div className={classnames('FormItem', className)} {...restProps}>
+        {children}
+      </div>
+    )
+  }
+}
+Form.Switch = class Switch extends React.Component {
+  state = {
+    isOn: this.props.isOn || false
+  }
+  render() {
+    const { className, icon_opened, icon_closed, ...restProps } = this.props
+    // 这里不合适使用 label+input 来观察
+    // return (
+    //   <>
+    //     <input
+    //     id={id}
+    //       type="checkbox"
+    //       defaultChecked
+    //       onChange={e => console.log('e: ', { ...e })}
+    //     />
+    //     <label for={id} className={classnames('Switch', className)} {...restProps}>
+    //       world
+    //     </label>
+    //   </>
+    // )
+    return (
+      <div
+        className={classnames('Switch', {
+          isOn: this.state.isOn,
+          isOff: !this.state.isOn
+        })}
+      >
+        <div className="_background"></div>
+        {icon_closed && <div className="_icon-closed">{icon_closed}</div>}
+        {icon_opened && <div className="_icon-opened">{icon_opened}</div>}
+        <div
+          className="_toggle-header"
+          onClick={() => {
+            this.setState({ isOn: !this.state.isOn })
+          }}
+        ></div>
+      </div>
+    )
+  }
+}
 
 function UsageExample() {
   return (
@@ -26,6 +109,11 @@ function UsageExample() {
         <div>world</div>
         <div>world</div>
       </List>
+      <Form>
+        <Form.Item>
+          <Form.Switch value="sdf" />
+        </Form.Item>
+      </Form>
     </div>
   )
 }

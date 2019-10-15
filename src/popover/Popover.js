@@ -15,6 +15,19 @@ import './Popover.css'
  */
 /**
  * @extends { Component<Popover_Props, Popover_State> }
+ * @example
+ * <Popover
+ *   childClassNames={{
+ *     self: 'hello1',
+ *     popBox: '2',
+ *     mask: '3'
+ *   }}
+ *   popBoxPlacement=""
+ *   hasMask={true}
+ *   popBox={<div className="card">ha</div>}
+ * >
+ *   <button className="inner-button">hello</button>
+ * </Popover>
  */
 export class Popover extends Component {
   state = {
