@@ -1,8 +1,8 @@
-import React, { ReactChildren, ReactChild, FormHTMLAttributes } from 'react'
+import React, { FormHTMLAttributes } from 'react'
 import classnames from 'classnames'
 import './Example.css'
-import { Popover } from './popover/Popover'
-import { List } from './List'
+import { Popover } from './popover'
+import { List } from './list'
 
 /**
  * @typedef { Object } Form_Props
@@ -51,37 +51,21 @@ Form.Switch = class Switch extends React.Component {
     isOn: this.props.isOn || false
   }
   render() {
-    const { className, icon_opened, icon_closed, ...restProps } = this.props
-    // 这里不合适使用 label+input 来观察
-    // return (
-    //   <>
-    //     <input
-    //     id={id}
-    //       type="checkbox"
-    //       defaultChecked
-    //       onChange={e => console.log('e: ', { ...e })}
-    //     />
-    //     <label for={id} className={classnames('Switch', className)} {...restProps}>
-    //       world
-    //     </label>
-    //   </>
-    // )
+    const { className, icon_opened, icon_closed } = this.props
     return (
       <div
-        className={classnames('Switch', {
+        className={classnames('Switch', className, {
           isOn: this.state.isOn,
           isOff: !this.state.isOn
         })}
+        onClick={() => {
+          this.setState({ isOn: !this.state.isOn })
+        }}
       >
-        <div className="_background"></div>
+        <div className="_background" />
         {icon_closed && <div className="_icon-closed">{icon_closed}</div>}
         {icon_opened && <div className="_icon-opened">{icon_opened}</div>}
-        <div
-          className="_toggle-header"
-          onClick={() => {
-            this.setState({ isOn: !this.state.isOn })
-          }}
-        ></div>
+        <div className="_toggle-handle" />
       </div>
     )
   }

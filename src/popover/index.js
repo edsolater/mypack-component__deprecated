@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import classnames from 'classnames'
-import './Popover.css'
+import './index.css'
 /**
  * @typedef { Object } Popover_Props
  * @property { string } [className] 给予组件额外的名称
