@@ -1,6 +1,12 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import classnames from 'classnames'
 import './index.css'
+/**
+ *
+ * @param {ReactNode} reactNode
+ * @return {ReactNode[]}
+ */
+const arrayReactChildren = reactNode => [reactNode].flat()
 /**
  * @typedef { Object } List_Props
  * @property { string } [className] 给予组件额外的名称
@@ -20,9 +26,10 @@ export default class List extends React.Component {
   render() {
     const { className, classNames = {}, children } = this.props
     return (
-      <div className={classnames('List', className)}>
-        {[children].flat().map(child => (
-          <div className={classnames('_listItem', classNames['listItem'])}>
+      <div className={classnames('UI_List', className)}>
+        {/* 知道有些冗余，但react.createElement()似乎无法被 react DevTool 检测具体位置 */}
+        {arrayReactChildren(children).map(child => (
+          <div key={child} className={classnames('__listItem', classNames.listItem)}>
             {child}
           </div>
         ))}
@@ -30,3 +37,4 @@ export default class List extends React.Component {
     )
   }
 }
+//

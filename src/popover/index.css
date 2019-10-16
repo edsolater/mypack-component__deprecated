@@ -1,8 +1,8 @@
-.Popover.open ._popBox {
+.UI_Popover.open .__boxContent {
   display: initial;
   position: absolute;
 }
-.Popover.open ._mask {
+.UI_Popover.open .__mask {
   display: initial;
   background: rgba(0, 0, 0, 0.4);
   position: absolute;
@@ -12,7 +12,7 @@
   width: 100vw;
   height: 100vh;
 }
-.Popover ._popBox,
-.Popover ._mask {
+.UI_Popover .__boxContent,
+.UI_Popover .__mask {
   display: none;
 }

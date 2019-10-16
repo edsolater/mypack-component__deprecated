@@ -4,10 +4,10 @@ import './index.css'
 /**
  * @typedef { Object } Popover_Props
  * @property { string } [className] 给予组件额外的名称
- * @property {{slot: string, popBox: string, mask: string}} [childClassNames] 指定子组件的 className
- * @property { string } [popBoxPlacement]
+ * @property {{button: string, popContent: string, mask: string}} [childClassNames] 指定子组件的 className
+ * @property { string } [boxPlacement]
  * @property { boolean } [hasMask=false]
- * @property { ReactNode } [popBox] 弹出的内容
+ * @property { ReactNode } [boxContent] 弹出的内容
  */
 /**
  * @typedef { Object } Popover_State
@@ -16,18 +16,18 @@ import './index.css'
 /**
  * @extends { React.Component<Popover_Props, Popover_State> }
  * @example
- * <Popover
- *   childClassNames={{
- *     self: 'hello1',
- *     popBox: '2',
- *     mask: '3'
- *   }}
- *   popBoxPlacement=""
- *   hasMask={true}
- *   popBox={<div className="card">ha</div>}
- * >
- *   <button className="inner-button">hello</button>
- * </Popover>
+ *   <Popover
+ *     childClassNames={{
+ *       self: 'hello1',
+ *       popBox: '2',
+ *       mask: '3'
+ *     }}
+ *     popBoxPlacement=""
+ *     hasMask={true}
+ *     popBox={<div className="card">ha</div>}
+ *   >
+ *     <button className="inner-button">hello</button>
+ *   </Popover>
  */
 export default class Popover extends React.Component {
   state = {
@@ -39,14 +39,14 @@ export default class Popover extends React.Component {
       children,
       className,
       childClassNames = {},
-      popBoxPlacement = '',
-      popBox,
+      boxPlacement = '',
+      boxContent,
       hasMask = false
     } = this.props
     return (
-      <div className={classnames('Popover', className, { open })}>
+      <div className={classnames('UI_Popover', className, { open })}>
         <div
-          className={classnames('_slot', childClassNames['slot'])}
+          className={classnames('__button', childClassNames.button)}
           onClick={() => {
             this.setState({ open: !open })
           }}
@@ -55,16 +55,16 @@ export default class Popover extends React.Component {
         </div>
         <div
           className={classnames(
-            '_popBox',
-            childClassNames['popBox'],
-            popBoxPlacement.toLowerCase()
+            '__boxContent',
+            childClassNames.boxContent,
+            boxPlacement.toLowerCase()
           )}
         >
-          {popBox}
+          {boxContent}
         </div>
         {hasMask ? (
           <div
-            className={classnames('_mask', childClassNames['mask'])}
+            className={classnames('__mask', childClassNames.mask)}
             onClick={() => {
               this.setState({ open: !open })
             }}

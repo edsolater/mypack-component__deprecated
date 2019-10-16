@@ -52,7 +52,7 @@ Form.Switch = class Switch extends React.Component {
     isOn: this.props.isOn || false
   }
   render() {
-    const { className, icon_opened, icon_closed } = this.props
+    const { className, icon_opened, icon_closed, icons = {} } = this.props
     return (
       <div
         className={classnames('Switch', className, {
@@ -63,16 +63,24 @@ Form.Switch = class Switch extends React.Component {
           this.setState({ isOn: !this.state.isOn })
         }}
       >
-        <div className="_background" />
-        {icon_closed && <div className="_icon-closed">{icon_closed}</div>}
-        {icon_opened && <div className="_icon-opened">{icon_opened}</div>}
-        <div className="_toggle-handle" />
+        <div className="__background" />
+        {icon_closed && (
+          <div className="__icon-closed">
+            {icon_closed || icons['icon_closed']}
+          </div>
+        )}
+        {icon_opened && (
+          <div className="__icon-opened">
+            {icon_opened || icons['icon_opened']}
+          </div>
+        )}
+        <div className="__toggle-handle" />
       </div>
     )
   }
 }
 
-function Example() {  
+function Example() {
   return (
     <div className="Example">
       <Popover
@@ -81,21 +89,21 @@ function Example() {
           popBox: '2',
           mask: '3'
         }}
-        popBoxPlacement=""
+        boxPlacement=""
         hasMask={true}
-        popBox={<div className="card">ha</div>}
+        boxContent={<div className="card">ha</div>}
       >
         <button className="inner-button">hello</button>
       </Popover>
-      <List>
+      <List displayName="hh">
         <div>hello</div>
-        <>
+        <List>
           <div>hello</div>
           <div>lalala</div>
-        </>
-        <div>world</div>
-        <div>world</div>
-        <div>world</div>
+        </List>
+        <div className="hello hhe">world</div>
+        <div className="hello">world</div>
+        <div className="hello">world</div>
       </List>
       <Form>
         <Form.Item>
