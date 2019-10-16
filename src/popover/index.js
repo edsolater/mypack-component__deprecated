@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { ReactNode } from 'react'
 import classnames from 'classnames'
 import './index.css'
 /**
@@ -7,14 +7,14 @@ import './index.css'
  * @property {{slot: string, popBox: string, mask: string}} [childClassNames] 指定子组件的 className
  * @property { string } [popBoxPlacement]
  * @property { boolean } [hasMask=false]
- * @property { ReactChildren | ReactChild } [popBox] 弹出的内容
+ * @property { ReactNode } [popBox] 弹出的内容
  */
 /**
  * @typedef { Object } Popover_State
  * @property { boolean } [open] 是否弹出弹框
  */
 /**
- * @extends { Component<Popover_Props, Popover_State> }
+ * @extends { React.Component<Popover_Props, Popover_State> }
  * @example
  * <Popover
  *   childClassNames={{
@@ -29,25 +29,48 @@ import './index.css'
  *   <button className="inner-button">hello</button>
  * </Popover>
  */
-export class Popover extends Component {
+export default class Popover extends React.Component {
   state = {
     open: false
-  };
+  }
   render() {
-    const { open } = this.state;
-    const { children, className, childClassNames = {}, popBoxPlacement = '', popBox, hasMask = false } = this.props;
-    return (<div className={classnames('Popover', className, { open })}>
-      <div className={classnames('_slot', childClassNames['slot'])} onClick={() => {
-        this.setState({ open: !open });
-      }}>
-        {children}
+    const { open } = this.state
+    const {
+      children,
+      className,
+      childClassNames = {},
+      popBoxPlacement = '',
+      popBox,
+      hasMask = false
+    } = this.props
+    return (
+      <div className={classnames('Popover', className, { open })}>
+        <div
+          className={classnames('_slot', childClassNames['slot'])}
+          onClick={() => {
+            this.setState({ open: !open })
+          }}
+        >
+          {children}
+        </div>
+        <div
+          className={classnames(
+            '_popBox',
+            childClassNames['popBox'],
+            popBoxPlacement.toLowerCase()
+          )}
+        >
+          {popBox}
+        </div>
+        {hasMask ? (
+          <div
+            className={classnames('_mask', childClassNames['mask'])}
+            onClick={() => {
+              this.setState({ open: !open })
+            }}
+          />
+        ) : null}
       </div>
-      <div className={classnames('_popBox', childClassNames['popBox'], popBoxPlacement.toLowerCase())}>
-        {popBox}
-      </div>
-      {hasMask ? (<div className={classnames('_mask', childClassNames['mask'])} onClick={() => {
-        this.setState({ open: !open });
-      }} />) : null}
-    </div>);
+    )
   }
 }

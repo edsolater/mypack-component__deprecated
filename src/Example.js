@@ -1,8 +1,9 @@
 import React, { FormHTMLAttributes } from 'react'
 import classnames from 'classnames'
 import './Example.css'
-import { Popover } from './popover'
-import { List } from './list'
+
+import Popover from './Popover'
+import List from './List'
 
 /**
  * @typedef { Object } Form_Props
@@ -71,7 +72,7 @@ Form.Switch = class Switch extends React.Component {
   }
 }
 
-function UsageExample() {
+function Example() {  
   return (
     <div className="Example">
       <Popover
@@ -88,7 +89,10 @@ function UsageExample() {
       </Popover>
       <List>
         <div>hello</div>
-        <div>hello</div>
+        <>
+          <div>hello</div>
+          <div>lalala</div>
+        </>
         <div>world</div>
         <div>world</div>
         <div>world</div>
@@ -102,4 +106,4 @@ function UsageExample() {
   )
 }
 
-export default UsageExample
+export default Example
