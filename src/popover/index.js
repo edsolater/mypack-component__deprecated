@@ -46,7 +46,7 @@ export default class Popover extends React.Component {
     return (
       <div className={classnames('UI_Popover', className, { open })}>
         <div
-          className={classnames('__button', childClassNames.button)}
+          className={classnames('__button', childClassNames['button'])}
           onClick={() => {
             this.setState({ open: !open })
           }}
@@ -56,7 +56,7 @@ export default class Popover extends React.Component {
         <div
           className={classnames(
             '__boxContent',
-            childClassNames.boxContent,
+            childClassNames['popup-content'],
             boxPlacement.toLowerCase()
           )}
         >
@@ -64,7 +64,7 @@ export default class Popover extends React.Component {
         </div>
         {hasMask ? (
           <div
-            className={classnames('__mask', childClassNames.mask)}
+            className={classnames('__mask', childClassNames['mask'])}
             onClick={() => {
               this.setState({ open: !open })
             }}

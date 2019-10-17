@@ -55,7 +55,7 @@ Form.Switch = class Switch extends React.Component {
     const { className, icon_opened, icon_closed, icons = {} } = this.props
     return (
       <div
-        className={classnames('Switch', className, {
+        className={classnames('UI_Switch', className, {
           isOn: this.state.isOn,
           isOff: !this.state.isOn
         })}
@@ -85,7 +85,6 @@ function Example() {
     <div className="Example">
       <Popover
         childClassNames={{
-          self: 'hello1',
           popBox: '2',
           mask: '3'
         }}
@@ -95,7 +94,7 @@ function Example() {
       >
         <button className="inner-button">hello</button>
       </Popover>
-      <List displayName="hh">
+      <List>
         <div>hello</div>
         <List>
           <div>hello</div>
