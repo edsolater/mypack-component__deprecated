@@ -1,40 +1,6 @@
-.UI_Popover .card {
+.UI__Popover .card {
   padding: 8px;
   background: white;
   border-radius: 8px;
   width: max-content;
-}
-.UI_List .__item {
-  list-style: none;
-}
-.UI_Switch {
-  position: relative;
-  width: 42px;
-  height: 20px;
-}
-.UI_Switch .__background {
-  width: 100%;
-  height: 100%;
-  border-radius: 1000px;
-}
-.UI_Switch .__toggle-handle {
-  position: absolute;
-  height: 18px;
-  width: 18px;
-  border-radius: 1000px;
-  background: white;
-  top: 1px;
-  transition: left 0.2s ease;
-}
-.UI_Switch.isOn .__background {
-  background: dodgerblue;
-}
-.UI_Switch.isOn .__toggle-handle {
-  left: 23px;
-}
-.UI_Switch.isOff .__background {
-  background: gray;
-}
-.UI_Switch.isOff .__toggle-handle {
-  left: 1px;
 }

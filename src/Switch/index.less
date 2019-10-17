@@ -1,0 +1,38 @@
+.UI_Switch {
+  @toggle-header-radius: 9px;
+  @toggle-gap-size: 1px;
+  @switch-width: 42px;
+  position: relative;
+  width: @switch-width;
+  height: 2 * (@toggle-header-radius + @toggle-gap-size);
+  .SLOT-Switch__background {
+    width: 100%;
+    height: 100%;
+    border-radius: 1000px;
+  }
+  .SLOT-Switch__toggle-handle {
+    position: absolute;
+    height: @toggle-header-radius * 2;
+    width: $height;
+    border-radius: 1000px;
+    background: white;
+    top: @toggle-gap-size;
+    transition: left 0.2s ease;
+  }
+  &.isOn {
+    .SLOT-Switch__background {
+      background: dodgerblue;
+    }
+    .SLOT-Switch__toggle-handle {
+      left: @switch-width - 2 * @toggle-header-radius - @toggle-gap-size;
+    }
+  }
+  &.isOff {
+    .SLOT-Switch__background {
+      background: gray;
+    }
+    .SLOT-Switch__toggle-handle {
+      left: @toggle-gap-size;
+    }
+  }
+}

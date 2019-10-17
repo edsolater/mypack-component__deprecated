@@ -1,10 +1,10 @@
-.UI_Popover {
+.UI__Popover {
   &.open {
-    .__boxContent {
+    .SLOT-Popover__popBox {
       display: initial;
       position: absolute;
     }
-    .__mask {
+    .SLOT-Popover__mask {
       display: initial;
       background: rgba(0, 0, 0, 0.4);
       position: absolute;
@@ -16,8 +16,8 @@
     }
   }
 
-  .__boxContent,
-  .__mask {
+  .SLOT-Popover__popBox,
+  .SLOT-Popover__mask {
     display: none;
   }
 }

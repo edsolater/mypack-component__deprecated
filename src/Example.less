@@ -1,48 +1,7 @@
-.UI_Popover .card {
+.UI__Popover .card {
   padding: 8px;
   background: white;
   border-radius: 8px;
   width: max-content;
 }
 
-.UI_List .__item {
-  list-style: none;
-}
-.UI_Switch {
-  @toggle-header-radius: 9px;
-  @toggle-gap-size: 1px;
-  @switch-width: 42px;
-  position: relative;
-  width: @switch-width;
-  height: 2 * (@toggle-header-radius + @toggle-gap-size);
-  .__background {
-    width: 100%;
-    height: 100%;
-    border-radius: 1000px;
-  }
-  .__toggle-handle {
-    position: absolute;
-    height: @toggle-header-radius * 2;
-    width: $height;
-    border-radius: 1000px;
-    background: white;
-    top: @toggle-gap-size;
-    transition: left 0.2s ease;
-  }
-  &.isOn {
-    .__background {
-      background: dodgerblue;
-    }
-    .__toggle-handle {
-      left: @switch-width - 2 * @toggle-header-radius - @toggle-gap-size;
-    }
-  }
-  &.isOff {
-    .__background {
-      background: gray;
-    }
-    .__toggle-handle {
-      left: @toggle-gap-size;
-    }
-  }
-}

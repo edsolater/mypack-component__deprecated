@@ -1,12 +1,7 @@
-import React, { ReactNode } from 'react'
+import React from 'react'
 import classnames from 'classnames'
 const a = import('./index.css').then(res => console.log(res))
-/**
- *
- * @param {ReactNode} reactNode
- * @return {ReactNode[]}
- */
-const arrayReactChildren = reactNode => [reactNode].flat()
+
 /**
  * @typedef { Object } List_Props
  * @property { string } [className] 给予组件额外的名称
@@ -21,11 +16,12 @@ const arrayReactChildren = reactNode => [reactNode].flat()
  * @extends { React.Component<List_Props, List_State> }
  */
 export default class List extends React.Component {
+  static displayName = 'UI__List'
   // 既然vscode没有<ul><li>都是使用<div>模拟的，那么我也这么干
   render() {
     const { className, children } = this.props
     return (
-      <div className={classnames('UI_List', className)}>
+      <div className={classnames('UI__List', className)}>
         {/* 知道有些冗余，但react.createElement()似乎无法被 react DevTool 检测具体位置 */}
         {/* 如果把Items的包壳隐藏在组件内部，用户会疑惑的 */}
         {children}
@@ -34,11 +30,12 @@ export default class List extends React.Component {
   }
 }
 
-List.Item = class ListItem {
+List.Item = class ListItem extends React.Component{
+  static displayName = 'SLOT-List__Item'
   render() {
     const { className, children } = this.props
     return (
-      <div className={classnames('UI_List_Item', className)}>{children}</div>
+      <div className={classnames('SLOT-List__Item', className)}>{children}</div>
     )
   }
 }

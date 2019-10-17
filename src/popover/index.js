@@ -4,10 +4,10 @@ import './index.css'
 /**
  * @typedef { Object } Popover_Props
  * @property { string } [className] 给予组件额外的名称
- * @property {{button: string, popContent: string, mask: string}} [childClassNames] 指定子组件的 className
- * @property { string } [boxPlacement]
+ * @property {{button: string, popBox: string, mask: string}} [childClassNames] 指定子组件的 className
+ * @property { string } [popBoxPlacement]
  * @property { boolean } [hasMask=false]
- * @property { ReactNode } [boxContent] 弹出的内容
+ * @property { ReactNode } [popBox] 弹出的内容
  */
 /**
  * @typedef { Object } Popover_State
@@ -30,6 +30,7 @@ import './index.css'
  *   </Popover>
  */
 export default class Popover extends React.Component {
+  static displayName = 'UI__Popover'
   state = {
     open: false
   }
@@ -38,15 +39,18 @@ export default class Popover extends React.Component {
     const {
       children,
       className,
-      childClassNames = {},
-      boxPlacement = '',
-      boxContent,
+      slotClassNames = {},
+      popBoxPlacement = '',
+      popBox,
       hasMask = false
     } = this.props
     return (
-      <div className={classnames('UI_Popover', className, { open })}>
+      <div className={classnames('UI__Popover', className, { open })}>
         <div
-          className={classnames('__button', childClassNames['button'])}
+          className={classnames(
+            'SLOT-Popover__button',
+            slotClassNames['button']
+          )}
           onClick={() => {
             this.setState({ open: !open })
           }}
@@ -55,16 +59,19 @@ export default class Popover extends React.Component {
         </div>
         <div
           className={classnames(
-            '__boxContent',
-            childClassNames['popup-content'],
-            boxPlacement.toLowerCase()
+            'SLOT-Popover__popBox',
+            slotClassNames['popBox'],
+            popBoxPlacement.toLowerCase() // 额外
           )}
         >
-          {boxContent}
+          {popBox}
         </div>
         {hasMask ? (
           <div
-            className={classnames('__mask', childClassNames['mask'])}
+            className={classnames(
+              'SLOT-Popover__mask',
+              slotClassNames['mask']
+            )}
             onClick={() => {
               this.setState({ open: !open })
             }}
