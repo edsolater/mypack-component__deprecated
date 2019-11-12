@@ -8,7 +8,7 @@ import Popover from './utilComponent/Popover'
 
 function Example() {
   const myref = React.useRef()
-  console.log('myref: ', myref)
+  const pop = {}
   return (
     <div className="Example">
       <old_Popover
@@ -38,7 +38,10 @@ function Example() {
           <Form.Switch value="sdf" />
         </Form.Item>
       </Form>
-      <Popover><button>haha</button></Popover>
+      <Popover handler={pop}></Popover>
+      <div onClick={() => {
+        pop.forToggleMusk()
+      } }>haha</div>
     </div>
   )
 }

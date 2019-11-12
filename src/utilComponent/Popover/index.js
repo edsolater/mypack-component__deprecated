@@ -33,16 +33,12 @@ const Popover = ({ handler, children, contentNode }) => {
   const [isMuskOpen, toggleMusk] = useToggle(false)
   //#region 上抛控制用函数
   if (handler) {
-    const { forToggleMusk } = handler
-    if (forToggleMusk) {
-      handler.forToggleMusk = toggleMusk
-    }
+    handler.forToggleMusk = toggleMusk
   }
   //#endregion
   return (
     <div className="Popover" onClick={toggleMusk}>
       {children}
-      {[1, 2]}
       <Musk muskController={[isMuskOpen, toggleMusk]} contentNode={contentNode} />
     </div>
   )
