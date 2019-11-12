@@ -4,7 +4,7 @@ import './Example.css'
 import old_Popover from './Popover'
 import List from './List'
 import Form from './Form'
-import  Popover  from './utilComponent/Popover'
+import Popover from './utilComponent/Popover'
 
 function Example() {
   const myref = React.useRef()
