@@ -1,15 +1,18 @@
-import React, { FormHTMLAttributes } from 'react'
-import classnames from 'classnames'
+import React from 'react'
 import './Example.css'
 
-import Popover from './Popover'
+import old_Popover from './Popover'
 import List from './List'
 import Form from './Form'
+import  Popover  from './utilComponent/Popover'
 
 function Example() {
+  const myref = React.useRef()
+  console.log('myref: ', myref)
   return (
     <div className="Example">
-      <Popover
+      <old_Popover
+        ref={myref}
         childClassNames={{
           popBox: '2',
           mask: '3'
@@ -19,7 +22,7 @@ function Example() {
         popBox={<div className="card">ha</div>}
       >
         <button className="inner-button">hello</button>
-      </Popover>
+      </old_Popover>
       <List>
         <List.Item>hello</List.Item>
         <List>
@@ -35,6 +38,7 @@ function Example() {
           <Form.Switch value="sdf" />
         </Form.Item>
       </Form>
+      <Popover>hello</Popover>
     </div>
   )
 }

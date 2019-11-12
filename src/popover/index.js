@@ -29,10 +29,13 @@ import './index.css'
  *     <button className="inner-button">hello</button>
  *   </Popover>
  */
-export default class Popover extends React.Component {
+export default class old_Popover extends React.Component { //TOFIX: 这代码不直观呀
   static displayName = 'UI__Popover'
   state = {
     open: false
+  }
+  onClick(){
+    console.log('hello it\'s me')
   }
   render() {
     const { open } = this.state
