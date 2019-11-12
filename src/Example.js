@@ -38,7 +38,7 @@ function Example() {
           <Form.Switch value="sdf" />
         </Form.Item>
       </Form>
-      <Popover>hello</Popover>
+      <Popover><button>haha</button></Popover>
     </div>
   )
 }
