@@ -40,7 +40,7 @@ function Example() {
       </Form>
       <Popover handler={pop}></Popover>
       <div onClick={() => {
-        pop.forToggleMusk()
+        pop.toggleMusk()
       } }>haha</div>
     </div>
   )

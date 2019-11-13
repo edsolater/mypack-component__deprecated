@@ -1,6 +1,7 @@
 import React from 'react'
 import { useToggle } from '../../myHooks'
 import './Popover.css'
+import { useHandler } from 'myHooks/useHandler'
 
 /**
  * 弹出层内容
@@ -28,14 +29,11 @@ Musk.displayName = 'Child(Musk)'
 
 /**
  * 主组件
+ * 
  */
 const Popover = ({ handler, children, contentNode }) => {
   const [isMuskOpen, toggleMusk] = useToggle(false)
-  //#region 上抛控制用函数
-  if (handler) {
-    handler.forToggleMusk = toggleMusk
-  }
-  //#endregion
+  useHandler(handler, { toggleMusk })
   return (
     <div className="Popover" onClick={toggleMusk}>
       {children}
