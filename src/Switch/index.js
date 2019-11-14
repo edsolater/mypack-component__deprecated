@@ -13,6 +13,7 @@ export default class Switch extends React.Component {
         className={classnames('UI__Switch', className, {
           isOn: this.state.isOn,
           isOff: !this.state.isOn
+          
         })}
         onClick={() => {
           this.setState({ isOn: !this.state.isOn })
